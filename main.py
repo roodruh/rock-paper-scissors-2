@@ -43,13 +43,33 @@ def who_won(usr, comp):
             None
     return (usr_wins, comp_wins)
 
-def game():
-    num_of_rounds = int(input("How many rounds do you want to play?"))
+def game_winner(usr, comp):
+    if usr > comp:
+        print("You Won! Game Over.")
+    elif usr < comp:
+        print("You Lost! Haha, fucking loser.")
+    else:
+        print("It's a Tie!")
 
-    for rounds in range(num_of_rounds):       
-        usr = usr_input()
-        comp = comp_input()
-        who_won(usr, comp)
+def game():
+    while True:
+        num_of_rounds = int(input("How many rounds do you want to play?"))
+
+        for rounds in range(num_of_rounds):       
+            usr = usr_input()
+            comp = comp_input()
+
+            (usr_wins, comp_wins) = who_won(usr, comp)
+            game_winner(usr_wins, comp_wins)
+
+    play_again = input("Do you want to play again? (y/n): ").lower()
+
+            if play_again == "y":
+                continue
+            else:
+                break       
+
+
         
 
 
